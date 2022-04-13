@@ -12,15 +12,11 @@ function draw() {
   background(0);
   
   pie.show();
-
-  pie.show();
   pie.update();
   
   if (plate.catches(pie)) {
     console.log("🤗")
   }
-
-
   
   plate.x = mouseX;
   plate.show();
