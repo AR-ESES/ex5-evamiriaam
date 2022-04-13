@@ -19,5 +19,4 @@ class Plate {
     rectMode(CENTER);
     rect(this.x, this.y, this.w, this.h);
   }
-  
 }
