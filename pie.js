@@ -4,6 +4,7 @@ class Pie {
     this.x = x;
     this.y = y;
     this.r = 16;
+    this.yspeed = 0;
     this.digit = floor(random(10));
   }
   
@@ -18,6 +19,7 @@ class Pie {
   }
   
   update() {
-    this.y = this.y + 5;
+    this.y = this.y + this.yspeed;
+    this.yspeed = this.yspeed + 0.2;
   }
 }
