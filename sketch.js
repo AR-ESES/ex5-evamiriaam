@@ -2,10 +2,13 @@ let pies = [];
 let plate;
 
 let pi;
+let piShow = '';
 
 let digitsDiv;
 let digits = "3.";
 let piCounter = 0;
+
+let gameOver = false;
 
 function preload(){
   pi = loadStrings('one-million.txt');
@@ -13,14 +16,31 @@ function preload(){
 
 function setup() {
   pi = pi.join('');
-  createCanvas(400, 400);
+  createCanvas(800, 400);
   plate = new Plate(width / 2, 50);
   digitsDiv = createDiv(digits);
   digitsDiv.style('font-size', '64pt');
+  piShow = pi.substring(0, 24);
 }
 
 function draw() {
+  if (gameOver) {
+    background(255, 0, 0);
+    fill(255);
+    textAlign(CENTER, CENTER);
+    text("Game Over. \nGo and Enjoy Some Pie! ✨", width/2, height/2);
+    return;
+  }
+
   background(0);
+
+  fill(255);
+  textSize(32);
+  text(piShow, width-64, 32);
+  fill(0, 255, 0);
+  textSize(32);
+  text(piShow.charAt, width-64, 50);
+
   if (random(1) < 0.1) {
     pies.push(new Pie(random(width), random(-100, -20)));
   }
@@ -44,8 +64,10 @@ function draw() {
       console.log("✨");
       digits += digit;
       piCounter++;
+        piShow = pi.substring(piCounter, piCounter + 24);
     } else {
-      console.log("❤️");
+      gameOver = true;
+      //console.log("❤️");
     }
     digitsDiv.html(digits);
 
