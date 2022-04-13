@@ -3,19 +3,32 @@ class Pie {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.r = 16;
+    this.r = 32;
     this.yspeed = 0;
     this.digit = floor(random(10));
+    this.angle = random(TWO_PI);
   }
   
   show() {
 
-    fill(255);
+    translate(this.x, this.y);
+    rotate(this.angle);
+    stroke(255);
+    strokeWeight(2);
+    noFill();
     circle(this.x, this.y, this.r * 2);
-    fill(0);
-    textSize(32);
-    textAlign(CENTER,CENTER);
-    text(this.digit, this.x, this.y);
+   
+    //for (let i = 0; i < 9; i++) {
+    let a = TWO_PI/9;
+    let d = this.r * 2;
+    for (let i = 0; i < this.digit; i ++) {
+      fill(255,0,255);
+      arc(this.x, this.y, d, d, i*a, (i+1)*a, PIE);
+    }
+   //}
+    //textSize(32);
+    //textAlign(CENTER,CENTER);
+    //text(this.digit, this.x, this.y);
   }
   
   update() {
