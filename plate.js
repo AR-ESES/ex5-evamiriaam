@@ -5,16 +5,17 @@ class Plate {
     this.h = 10;
     this.y = height - this.h;
   }
-  
+
   catches(pie) {
-    if (pie.y >= this.y && pie.x > this.x-this.w/2 && pie.x < this.x + w/2) {
+    if (pie.y + pie.r >= this.y && pie.x > this.x-this.w/2 && pie.x < this.x + this.w/2) {
       return true;
     } else {
       return false;
     }
   }
-  
-  show(){
+
+  show() {
+    fill(255);
     rectMode(CENTER);
     rect(this.x, this.y, this.w, this.h);
   }
