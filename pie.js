@@ -10,6 +10,6 @@ class Pie {
   }
   
   update() {
-    this.y = this.y + 1;
+    this.y = this.y + 5;
   }
 }
