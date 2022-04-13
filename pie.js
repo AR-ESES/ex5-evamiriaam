@@ -14,23 +14,26 @@ class Pie {
     translate(this.x, this.y);
     rotate(this.angle);
     stroke(255);
-    strokeWeight(2);
-    //noFill();
-    //circle(0, 0, this.r * 2);
+    strokeWeight(1);
+    fill(177,176,180,200);
+    circle(0, 0, this.r * 2);   
    
-    //for (let i = 0; i < 9; i++) {
-    let a = TWO_PI/9;
-    let d = this.r * 2;
-    for (let i = 0; i < this.digit; i ++) {
-      fill(255,0,255);
-      arc(this.x, this.y, d, d, i*a, (i+1)*a, PIE);
+     //for (let i = 0; i < 9; i++) {
+      let a = TWO_PI/9;
+      let d = this.r * 2;
+      for (let i = 0; i < this.digit; i++) {
+        fill(255,0,255);
+        stroke(255);
+      strokeWeight(4);
+        arc(0, 0, d, d, i*a, (i+1)*a, PIE);
+      }
+      pop();
+      //}
+      
+      // textSize(32);
+      // textAlign(CENTER,CENTER);
+      // text(this.digit, this.x, this.y);
     }
-    pop();
-   //}
-    //textSize(32);
-    //textAlign(CENTER,CENTER);
-    //text(this.digit, this.x, this.y);
-  }
   
   update() {
     this.y = this.y + this.yspeed;
