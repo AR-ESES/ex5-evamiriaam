@@ -1,19 +1,27 @@
 let pies = [];
 let plate;
 
+let pi;
+
 let digitsDiv;
-let digits = '';
+let digits = "3.";
+let piCounter = 0;
+
+function preload(){
+  pi = loadStrings('one-million.txt');
+}
 
 function setup() {
+  pi = pi.join('');
   createCanvas(400, 400);
   plate = new Plate(width / 2, 50);
-  digitsDiv = createDiv("");
+  digitsDiv = createDiv(digits);
   digitsDiv.style('font-size', '64pt');
 }
 
 function draw() {
   background(0);
-  if (random(1) < 0.05) {
+  if (random(1) < 0.1) {
     pies.push(new Pie(random(width), random(-100, -20)));
   }
   for (let pie of pies) {
@@ -28,7 +36,17 @@ function draw() {
     if (plate.catches(pies[i])) {
     // catch the pie
     // Check what digit was caught and deal with score
-    digits += pis[i].digit;
+    let digit = pies[i].digit;
+    digits += digit;
+
+    let correctDigit = pi.charAt(piCounter)
+    if (correctDigit == digit) {
+      console.log("✨");
+      digits += digit;
+      piCounter++;
+    } else {
+      console.log("❤️");
+    }
     digitsDiv.html(digits);
 
     pies.splice(i, 1);
